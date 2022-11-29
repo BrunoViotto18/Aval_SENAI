@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+app-root{
+    min-height: 100vh;
+}
+
+app-area{
+    min-height: 100vh;
+}
+
+router-outlet{
+    min-height: 100vh;
+}
