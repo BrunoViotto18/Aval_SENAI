@@ -1,10 +1,9 @@
 .area-component{
     display: grid;
     place-items: center;
-    min-height: 100%;
 }
 
-.patio{
+.area-content{
     background-color: red;
     width: 100px;
     min-height: 100px;

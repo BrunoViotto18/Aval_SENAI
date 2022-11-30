@@ -17,14 +17,8 @@ import { MainComponent } from './main/main.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      {
-        path: '',
-        component: MainComponent
-      },
-      {
-        path: 'area/:area',
-        component: AreaComponent
-      }
+      { path: '', component: MainComponent },
+      { path: 'area/:area', component: AreaComponent }
     ])
   ],
   providers: [],

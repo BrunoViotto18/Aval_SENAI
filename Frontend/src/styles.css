@@ -9,14 +9,7 @@ body{
     min-height: 100vh;
 }
 
-app-root{
-    min-height: 100vh;
-}
-
-app-area{
-    min-height: 100vh;
-}
-
-router-outlet{
+app-root, app-area, app-area > *{
+    display: block;
     min-height: 100vh;
 }
