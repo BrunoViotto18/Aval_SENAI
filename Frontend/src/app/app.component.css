@@ -1,0 +1,13 @@
+.topbar{
+    background-color: var(--Roxo);
+    color: var(--Branco);
+    height: max-content;
+}
+
+.topbar-main-link{
+    display: block;
+    font-size: 2em;
+    width: max-content;
+    padding: 10px 20px;
+    cursor: pointer;
+}
