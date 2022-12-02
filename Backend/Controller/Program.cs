@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Text;
 using Controller;
 using Model;
 
@@ -29,21 +30,38 @@ await Database.InitAsync();
 var builder = WebApplication.CreateBuilder(args);
 
 
-// Add services to the container.
+// CORS
+var mySpecificOrigins = "_MySpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(mySpecificOrigins, policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:4200", "https://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
+
+// Swagger
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+/* Criando o App */
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(mySpecificOrigins);
 
 app.UseHttpsRedirection();
 
