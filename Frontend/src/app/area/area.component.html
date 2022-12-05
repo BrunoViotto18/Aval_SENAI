@@ -1,10 +1,10 @@
 <div class="area-component">
     <main class="area-content">
-        <h1>Área X</h1>
+        <h1>Área {{area}}</h1>
         <div class="area-vehicles" >
-            <div class="vehicle-details" *ngFor="let item of veiculos">
-                <span class="vehicle-info">Modelo XYZ | Preço: {{10000 | currency: 'BRL'}}</span>
-                <div class="sell-button" [routerLink]="['/venda', 1]">Vender</div>
+            <div class="vehicle-details" *ngFor="let v of veiculos">
+                <span class="vehicle-info">Modelo {{v.modelo}} | Preço: {{v.preco| currency: 'BRL'}}</span>
+                <div class="sell-button" (click)="redirectToVenda(v.id)">Vender</div>
             </div>
         </div>
     </main>

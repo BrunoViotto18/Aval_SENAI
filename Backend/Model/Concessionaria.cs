@@ -11,6 +11,11 @@ public class Concessionaria
     public virtual List<Alocacao> Alocacoes { get; set; }
 
 
+    public Concessionaria(Concessionaria c) : this(c.Nome)
+    {
+        Id = c.Id;
+    }
+
     private Concessionaria(string nome)
     {
         Guard.Against.NullOrWhiteSpace(nome);

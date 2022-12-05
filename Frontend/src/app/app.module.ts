@@ -21,7 +21,7 @@ import { VendaComponent } from './venda/venda.component';
     RouterModule.forRoot([
       { path: '', component: MainComponent },
       { path: 'area/:area', component: AreaComponent },
-      { path: 'venda/:veiculoId', component: VendaComponent}
+      { path: 'venda/:automovelId', component: VendaComponent}
     ])
   ],
   providers: [],

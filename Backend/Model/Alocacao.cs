@@ -1,5 +1,7 @@
 ﻿using Ardalis.GuardClauses;
+using Microsoft.EntityFrameworkCore;
 using Model.Enums;
+using System.Runtime.CompilerServices;
 
 namespace Model;
 
@@ -33,6 +35,8 @@ public class Alocacao
         ConcessionariaId = concessionariaId;
     }
 
+    private Alocacao(Alocacao a) : this(a.Quantidade, a.Area, a.AutomovelId, a.ConcessionariaId) { }
+
 
     public static async Task<Alocacao> CreateAsync(int quantidade, Area area, int automovelId, int concessionariaId)
     {
@@ -54,5 +58,30 @@ public class Alocacao
         }
 
         return alocacao;
+    }
+
+    public async Task<Alocacao> DecreaseQuantityAsync(int amount=1)
+    {
+        Guard.Against.NegativeOrZero(amount);
+        Guard.Against.Negative(Quantidade - amount);
+
+        Quantidade -= amount;
+
+        using var context = new Context();
+
+        var transaction = await context.Database.BeginTransactionAsync();
+        try
+        {
+            context.Update(this);
+            await context.SaveChangesAsync();
+            await transaction.CommitAsync();
+        }
+        catch (Exception)
+        {
+            await transaction.RollbackAsync();
+            throw;
+        }
+
+        return this;
     }
 }

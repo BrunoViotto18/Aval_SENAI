@@ -1,4 +1,6 @@
 ﻿using Ardalis.GuardClauses;
+using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace Model;
 
@@ -13,18 +15,22 @@ public class Automovel
 
 
     private Automovel() { }
-
-    private Automovel(string nome, float preco)
+    internal Automovel(Automovel a) : this(a.Modelo, a.Preco)
     {
-        Guard.Against.NullOrWhiteSpace(nome);
+        Id = a.Id;
+    }
+
+    private Automovel(string modelo, float preco)
+    {
+        Guard.Against.NullOrWhiteSpace(modelo);
         Guard.Against.NegativeOrZero(preco);
 
-        nome = nome.Trim();
+        modelo = modelo.Trim();
 
-        if (nome.Length < 2)
+        if (modelo.Length < 2)
             throw new ArgumentException("O modelo do automovel deve conter ao menos dois caracteres.");
 
-        Modelo = nome;
+        Modelo = modelo;
         Preco = preco;
     }
 

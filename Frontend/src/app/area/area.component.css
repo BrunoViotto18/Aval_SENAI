@@ -6,7 +6,7 @@
 
 .area-content{
     color: var(--Roxo);
-    width: min(550px, 90vw);
+    width: min(600px, 90vw);
     min-height: 100px;
     padding: 50px;
     border-radius: 20px;

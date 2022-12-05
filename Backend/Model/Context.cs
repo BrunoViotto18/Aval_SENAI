@@ -28,11 +28,11 @@ public class Context : DbContext
             entity.Property(a => a.Quantidade);
             entity.Property(a => a.Area);
 
-            entity.HasOne(a => a.Automovel)
-                .WithMany(auto => auto.Alocacoes)
+            entity.HasOne(al => al.Automovel)
+                .WithMany()
                 .HasForeignKey(a => a.AutomovelId);
-            entity.HasOne(a => a.Concessionaria)
-                .WithMany(c => c.Alocacoes)
+            entity.HasOne(al => al.Concessionaria)
+                .WithMany()
                 .HasForeignKey(a => a.ConcessionariaId);
         });
 

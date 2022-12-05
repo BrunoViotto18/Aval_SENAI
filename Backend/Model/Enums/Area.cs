@@ -12,5 +12,6 @@ public enum Area
     Area7,
     Area8,
     Area9,
-    Area10
+    Area10,
+    Area11
 }

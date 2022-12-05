@@ -1,0 +1,144 @@
+.main-component{
+    display: grid;
+    place-items: center;
+}
+
+.main-content{
+    box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    width: min(800px, 90vw);
+    padding: 20px;
+    color: var(--Roxo);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main-content__areas{
+    position: relative;
+    outline: 1px solid black;
+}
+
+.main-content__areas > img{
+    max-width: 100%;
+    opacity: 0;
+}
+
+.main-content__areas > :not(img, .tilted-area), .sub-areas > *{
+    background-color: var(--Branco);
+    outline: 1px solid black;
+    position: absolute;
+}
+
+.sub-areas{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.tilted-area{
+    position: absolute;
+    pointer-events: none;
+}
+
+.area{
+    pointer-events: auto;
+}
+
+.tilted-area1{
+    height: 49.5%;
+    width: 31.5%;
+    top: 7%;
+    left: 5.2%;
+    transform: rotate(8deg);
+}
+
+.tilted-area2{
+    height: 68.5%;
+    width: 32.5%;
+    top: 19%;
+    right: -5%;
+    transform: rotate(-24deg);
+}
+
+.area > .number{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.number{
+    color: var(--Preto);
+}
+
+.area1{
+    height: 60%;
+    width: 48%;
+    top: 29%;
+    left: 35%;
+}
+
+.area2{
+    height: 39%;
+    width: 40%;
+    top: 60%;
+    left: 6%;
+}
+
+.area3{
+    height: 26%;
+    width: 11%;
+    top: 0;
+    left: 0;
+}
+
+.area4{
+    height: 26%;
+    width: 11%;
+    right: 0;
+    bottom: 0;
+}
+
+.area5{
+    height: 38%;
+    width: 45%;
+    top: 0;
+    right: 0;
+}
+
+.area6{
+    height: 17%;
+    width: 21%;
+}
+
+.area7{
+    height: 16%;
+    width: 28%;
+}
+
+.area8{
+    height: 27%;
+    width: 14%;
+    right: 0;
+}
+
+.area9{
+    height: 27%;
+    width: 14%;
+    top: 36%;
+    right: 20%;
+}
+
+.area10{
+    height: 49%;
+    width: 60%;
+    bottom: 0;
+    left: 0;
+}
+
+.area11{
+    height: 74%;
+    width: 100%;
+    bottom: 0;
+}
