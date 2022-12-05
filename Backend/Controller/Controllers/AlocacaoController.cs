@@ -4,6 +4,7 @@ using Model;
 
 namespace Controller.Controllers;
 
+using Controller.DTO;
 using Exceptions;
 
 
@@ -19,7 +20,8 @@ public class AlocacaoController : ControllerBase
 
         try
         {
-            situation = await Views.GetAllAllocatedAreas();
+            situation = await Views
+                .GetAllAllocatedAreasAsync();
         }
         catch (Exception e)
         {
@@ -30,14 +32,22 @@ public class AlocacaoController : ControllerBase
     }
 
     [HttpGet]
-    [Route("GetAllAutomobilesInArea/{area}")]
-    public async Task<IActionResult> GetAllAutomobilesInArea(Area area)
+    [Route("GetAllAutomobilesAllocatedInArea/{area}")]
+    public async Task<IActionResult> GetAllAutomobilesAllocatedInArea(Area area)
     {
-        Automovel[] automoveis;
+        object[] automoveis;
 
         try
         {
-            automoveis = await Views.GetAllAutomobilesInArea(area);
+            automoveis = (await Views
+                .GetAllAutomobilesInAreaAsync(area))
+                .Select(auto => new
+                {
+                    Id = auto.Id,
+                    Modelo = auto.Modelo,
+                    Preco = auto.Preco
+                })
+                .ToArray();
         }
         catch (Exception e)
         {
